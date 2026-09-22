@@ -1,0 +1,24 @@
+# Private WireGuard material and real tunnel profiles
+*.key
+*.pem
+*.p12
+*.pfx
+*.conf
+!*.conf.example
+.env
+.env.*
+!.env.example
+secrets/
+private/
+# Build and editor outputs
+bin/
+obj/
+build/
+dist/
+.gradle/
+.idea/
+.vscode/
+*.apk
+*.aab
+*.exe
+*.msi
