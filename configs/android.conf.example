@@ -1,0 +1,15 @@
+# LES-NET IPv4 split tunnel (Android).
+# Generate a UNIQUE key pair in the Android WireGuard app; keep private key only there.
+# Replace placeholders locally, add the Android public key on relay, then activate tunnel.
+[Interface]
+PrivateKey = <ANDROID_PRIVATE_KEY>
+Address = 10.77.0.11/32
+
+[Peer]
+PublicKey = <RELAY_PUBLIC_KEY>
+Endpoint = <RELAY_PUBLIC_IPV4_OR_DNS>:51820
+AllowedIPs = 10.77.0.0/24
+PersistentKeepalive = 25
+
+# For full IPv4 tunnel change AllowedIPs to 0.0.0.0/0 after configuring relay NAT.
+# IPv6/DNS leak prevention will be handled in the later managed-client version.
