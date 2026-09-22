@@ -1,16 +1,16 @@
-# LES-NET IPv4 split tunnel (Windows).
-# Create a fresh tunnel in official WireGuard and KEEP its private key on this device.
-# Replace ALL <...> placeholders locally; NEVER commit the completed configuration.
+# LES-NET Windows (official WireGuard client, IPv4 split tunnel)
+# Home Ubuntu VM under Proxmox is the SERVER. NO external VPS.
+# Generate a unique key pair on Windows, keep the private key on Windows.
 [Interface]
 PrivateKey = <WINDOWS_PRIVATE_KEY>
 Address = 10.77.0.10/32
 
 [Peer]
-PublicKey = <RELAY_PUBLIC_KEY>
-Endpoint = <RELAY_PUBLIC_IPV4_OR_DNS>:51820
+PublicKey = <HOME_SERVER_PUBLIC_KEY>
+Endpoint = <HOME_PUBLIC_IPV4_OR_DNS>:51820
 AllowedIPs = 10.77.0.0/24
 PersistentKeepalive = 25
 
-# Optional full IPv4 tunnel: replace AllowedIPs by 0.0.0.0/0.
-# Requires configured NAT/forwarding on relay. IPv6/DNS are not covered by this example.
-# Optional home LAN requires routed prefixes on both relay and Ubuntu VM plus return routing/NAT.
+# Full IPv4 through home: change AllowedIPs to 0.0.0.0/0 ONLY
+# after enabling authorized forwarding/NAT on the home Ubuntu server.
+# IPv6 and DNS leak handling is not provided here.
